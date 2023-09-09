@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
                 {/* row */}
                 <div className="grid-item"></div>
                 <div className="grid-item flex items-center">
-                <img style={{width:"130px"}} src="../../images/new-logo-tanawan91.png" alt="" />
+                    <img style={{width:"130px"}} src="../../images/new-logo-tanawan91.png" alt="" />
                 </div>
                 <div className="grid-item"></div>
                 <div className="grid-item"></div>

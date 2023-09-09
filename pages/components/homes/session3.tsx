@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 
@@ -43,7 +45,7 @@ const Session3 = () => {
                     <div className="w-full h-full bg-gray-300 rounded-xl p-6">
                         <h1 className='w-full text-2xl leading-9'>{o.title}</h1>
                         <p className='w-full py-4'>{o.shotDesc}</p>
-                        <a href="" className="btn-project">See Full Detail</a>
+                        <Link href="" className="btn-project">See Full Detail</Link>
                     </div>
                   </div>
                   <div className="w-8/12">
@@ -59,14 +61,14 @@ const Session3 = () => {
                   <div className="w-full h-full bg-gray-300 rounded-xl p-6">
                       <h1 className='w-full text-2xl leading-9'>{o.title}</h1>
                       <p className='w-full py-4'>{o.shotDesc}</p>
-                      <a href="" className="btn-project">See Full Detail</a>
+                      <Link href="" className="btn-project">See Full Detail</Link>
                   </div>
                 </div>
               </div>
           ))
         }
         <div className="w-ful text-center">
-            <a href="/articles" className="btn-more text-white">Read More</a>
+            <Link href="/articles" className="btn-more text-white">Read More</Link>
           </div>
       </div>
       </Fade>

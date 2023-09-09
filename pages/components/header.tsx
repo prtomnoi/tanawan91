@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Header = () => {
@@ -23,14 +25,14 @@ const Header = () => {
       <header>
         <div className="w-full">
           <div className="w-3/5 grid grid-cols-7 gap-4 mx-auto place-items-center">
-            <div>Services</div>
-            <div>Projects</div>
-            <div><a href="/articles">Publications</a></div>
+            <div><Link href="#">Services</Link></div>
+            <div><Link href="#">Projects</Link></div>
+            <div><Link href="/articles">Publications</Link></div>
             <div className="flex justify-center items-center">
-              <a href="/"><img src="../../images/new-logo-tanawan91.png" alt="" /></a>
+              <Link href="/"><img className="w-full" src="../../images/new-logo-tanawan91.png" alt="" /></Link>
             </div>
-            <div>Contact</div>
-            <div>About</div>
+            <div><Link href="#">Contact</Link></div>
+            <div><Link href="#">About</Link></div>
             <div>TH</div>
           </div>
         </div>

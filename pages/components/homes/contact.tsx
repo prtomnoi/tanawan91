@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Contact = () => {
@@ -65,7 +67,7 @@ const Contact = () => {
                  <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="Your Massages"/>
               </div>
               <div className="w-full py-8">
-                <a href="#" className="btn-light-default">Submit Now</a>
+                <Link href="#" className="btn-light-default">Submit Now</Link>
               </div>
             </div>
           </div>

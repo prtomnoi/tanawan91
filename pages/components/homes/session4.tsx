@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 
@@ -82,7 +84,7 @@ const Session4 = () => {
             }
           </div>
           <div className="w-ful text-center">
-            <a href="/articles" className="btn-more">Read More</a>
+            <Link href="/articles" className="btn-more">Read More</Link>
           </div>
         </div>
       </Fade>
