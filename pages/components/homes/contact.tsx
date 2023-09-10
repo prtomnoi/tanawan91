@@ -26,7 +26,6 @@ const Contact = () => {
       have suffered alteration in some form`
     }
   ]
-  console.log(data);
   return (
     <div className="w-full about-session text-black pt-4">
       <div className="container mx-auto p-8">

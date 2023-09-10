@@ -27,7 +27,6 @@ const Session3 = () => {
       have suffered alteration in some form`
     }
   ]
-  console.log(data);
   return (
     <div className="w-full about-session text-black pt-4">
       <Fade>

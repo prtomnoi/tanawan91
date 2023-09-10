@@ -14,7 +14,6 @@ const Slag: NextPage<ProviderPageProps> = ({ slug } : any) => {
     "Construction",
     "Project Hand over"
   ];
-  console.log(arrDataDesign);
   return (
     <Layout>
       <div className="w-full service-session pt-4">

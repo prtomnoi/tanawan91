@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IconContext } from "react-icons";
 import { BsArrowDownRight, BsArrowUpLeft } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
-import Image from "next/image";
 
 const Session2 = ({data}:any) => {
   const [activeDesign, setActiveDesign] = useState<{ [key: number]: boolean }>({ [0]: false });
@@ -22,7 +21,7 @@ const Session2 = ({data}:any) => {
                 </div>
                 <div className="w-8/12 pl-8">
                   {
-                    data.design?.map((o:any,i:any)=>(
+                    data?.design?.map((o:any,i:any)=>(
                       <div key={i} className="w-full">
                         <div className="w-full flex border-b mb-4" >
                           <h1 className='w-2/12 flex items-end' style={{fontSize:"53px"}}>{"0"+(i+1)}</h1>
@@ -69,7 +68,7 @@ const Session2 = ({data}:any) => {
             <div className="w-full flex my-8">
                 <div className="w-8/12 ">
                   {
-                    data.build?.map((o:any,i:any)=>(
+                    data?.build?.map((o:any,i:any)=>(
                       <div key={i} className="w-full">
                         <div className="w-full flex border-b mb-4" >
                           <h1 className='w-2/12 flex items-end' style={{fontSize:"53px"}}>{"0"+(i+1)}</h1>

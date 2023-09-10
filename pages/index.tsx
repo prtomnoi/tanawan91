@@ -80,7 +80,6 @@ const Home = () => {
       }
       let slides:any = document.getElementsByClassName("slide");
       let dots:any = document.getElementsByClassName("dot-slide");
-      console.log(slides);
       for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
           dots[i].classList.remove("active");
