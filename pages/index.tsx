@@ -80,19 +80,20 @@ const Home = () => {
       }
       let slides:any = document.getElementsByClassName("slide-banner");
       let dots:any = document.getElementsByClassName("dot-slide-banner");
-      for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-          dots[i].classList.remove("active");
+      if(slides.length >0){
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            dots[i].classList.remove("active");
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].classList.add("active");
+        console.log(slideIndex,index);
+        timeoutID = setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
       }
-      slideIndex++;
-      if (slideIndex > slides.length) {
-          slideIndex = 1;
-      }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].classList.add("active");
-      console.log(slideIndex,index);
-      timeoutID = setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
-
   }
 
   function resetTimeout(index?:any) {
