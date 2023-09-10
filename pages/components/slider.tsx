@@ -48,12 +48,11 @@ const Slider: React.FC<Props> = ({data,autoPlay}) => {
     // setGenId(makeid(5))
     showSlides();
   },[])
-  console.log(genId)
   return (
     <div className="w-full relative">
         <div className="slideshow-container" id={gid}>
             {
-                data.map((o:any,i:any)=>(
+                data?.map((o:any,i:any)=>(
                     <div key={i} className="slide">
                         <Fade>
                             <div className="w-full flex flex-wrap my-8">
@@ -74,7 +73,7 @@ const Slider: React.FC<Props> = ({data,autoPlay}) => {
         </div>
         <div className="w-full flex justify-center absolute dot-container">
             <div className="w-1/3 flex mx-auto">
-                {data.map((o:any,i:any)=>(
+                {data?.map((o:any,i:any)=>(
                     <div key={i} className='w-full px-2 text-center'>
                         <button type='button' className="dot-slide active" onClick={()=>showSlides(0)}></button>
                     </div>
