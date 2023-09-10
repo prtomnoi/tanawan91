@@ -30,18 +30,20 @@ const Slider: React.FC<Props> = ({data,autoPlay}) => {
       console.log(gid,ele);
       let slides:any = document.getElementsByClassName("slide");
       let dots:any = document.getElementsByClassName("dot-slide");
-      for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-          dots[i].classList.remove("active");
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {
-          slideIndex = 1;
-      }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].classList.add("active");
-      if(autoPlay){
-        setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
+      if(slides.length > 0){
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            dots[i].classList.remove("active");
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].classList.add("active");
+        if(autoPlay){
+          setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
+        }
       }
   }
   useEffect(()=>{
