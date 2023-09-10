@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className=" bottom-0 w-full text-white p-4">
+    <footer className=" bottom-0 w-full text-white p-4 md:block hidden">
         <div className="w-full relative">
             <div className="w-full grid grid-cols-5 gap-0 mx-auto">
                 {/* row */}

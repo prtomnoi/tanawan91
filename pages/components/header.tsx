@@ -20,11 +20,11 @@ const Header = () => {
   }, []);
   
   return (
-    <div className="relative">
+    <div className="relative hidden md:block">
     <div className="fixed top-0 left-0 w-full text-white p-4 z-10" id="menu-header">
       <header>
         <div className="w-full">
-          <div className="w-3/5 grid grid-cols-7 gap-4 mx-auto place-items-center">
+          <div className="w-full lg:w-3/5 grid grid-cols-7 gap-4 mx-auto place-items-center">
             <div><Link href="#">Services</Link></div>
             <div><Link href="#">Projects</Link></div>
             <div><Link href="/articles">Publications</Link></div>

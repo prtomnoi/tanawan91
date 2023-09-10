@@ -68,17 +68,17 @@ const Session4 = () => {
       <div className="container mx-auto p-8">
           <div className="w-full text-center">
             <p className=" uppercase">Publications</p>
-            <p className="w-2/3 mx-auto"  style={{fontSize:"30px"}}>News and Articles</p>
+            <p className="w-2/3 mx-auto title-session">News and Articles</p>
           </div>
           <div className="w-full flex flex-wrap my-8">
             {
               data.map((o:any,i:any)=>(
-                <div key={i} className="w-3/12 p-3">
+                <div key={i} className="w-2/4 md:w-3/12 p-3">
                   <div className="w-full">
                     <img src={o.img} alt="" />
                   </div>
-                  <h1 className='w-full text-2xl leading-9'>{o.title}</h1>
-                  <p className="shot-desc-article">{o.shotDesc}</p>
+                  <h1 className='w-full md:text-2xl leading-9'>{o.title}</h1>
+                  <p className=" text-xs md:text-base shot-desc-article">{o.shotDesc}</p>
                 </div>
               ))
             }

@@ -33,7 +33,7 @@ const Contact = () => {
           <p>CONTACT US</p>
         </div>
         <div className="w-full flex flex-wrap">
-          <div className="w-4/12">
+          <div className="w-full md:w-4/12">
             <p>
               64/66 Soi Cholprathan 10, Khan Klong Road, 
               Hua Hin, Hua Hin, Prachuap KhiriKhan 77110
@@ -70,7 +70,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className="w-8/12 px-8">
+          <div className="w-full md:w-8/12 md:px-8">
             <img className="w-full" src="../../images/map-mockup.png" alt="" />
           </div>
         </div>

@@ -72,14 +72,14 @@ const Home = () => {
     ]
   }
   let slideIndex = 0;
-  
+  let timeoutID:any;
   
   function showSlides(index?:any) {
-      if(index){
+      if(index >= 0){
         slideIndex = index;
       }
-      let slides:any = document.getElementsByClassName("slide");
-      let dots:any = document.getElementsByClassName("dot-slide");
+      let slides:any = document.getElementsByClassName("slide-banner");
+      let dots:any = document.getElementsByClassName("dot-slide-banner");
       for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
           dots[i].classList.remove("active");
@@ -90,7 +90,14 @@ const Home = () => {
       }
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].classList.add("active");
-      setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
+      console.log(slideIndex,index);
+      timeoutID = setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
+
+  }
+
+  function resetTimeout(index?:any) {
+      clearTimeout(timeoutID); // ล้าง timeout ที่กำลังทำงานอยู่
+      showSlides(index); // เริ่มการแสดงสไลด์ใหม่ทันที
   }
   useEffect(()=>{
     showSlides();
@@ -100,33 +107,33 @@ const Home = () => {
     <Layout>
       {/* <div className='banner'></div> */}
       <div className="w-full relative">
-        <div className="slideshow-container">
-            <div className="slide">
+        <div className="slideshow-container-banner">
+            <div className="slide-banner">
                 <Fade>
                   <img className='w-full' src="../../images/img-banner.png" alt="Slide 1" />
                 </Fade>
             </div>
-            <div className="slide">
+            <div className="slide-banner">
                 <Fade>
                   <img className='w-full' style={{filter:"brightness(0.5)"}} src="../../images/article-mockup-2.png" alt="Slide 2" />
                 </Fade>
             </div>
-            <div className="slide">
+            <div className="slide-banner">
                 <Fade>
                   <img className='w-full' src=".../../images/about-mockup-2.png" alt="Slide 3" />
                 </Fade>
             </div>
         </div>
-        <div className="w-full flex justify-center absolute bottom-36">
-            <div className="w-1/6 flex mx-auto">
+        <div className="w-full flex justify-center absolute dot-container-banner">
+            <div className="w-1/3 md:w-1/6 flex mx-auto">
               <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide active" onClick={()=>showSlides(0)}></button>
+                <button type='button' className="dot-slide-banner active" onClick={()=>resetTimeout(0)}></button>
               </div>
               <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide" onClick={()=>showSlides(1)}></button>
+                <button type='button' className="dot-slide-banner" onClick={()=>resetTimeout(1)}></button>
               </div>
               <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide" onClick={()=>showSlides(2)}></button>
+                <button type='button' className="dot-slide-banner" onClick={()=>resetTimeout(2)}></button>
               </div>
             </div>
         </div>

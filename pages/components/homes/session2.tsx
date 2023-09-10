@@ -13,21 +13,21 @@ const Session2 = ({data}:any) => {
         <div className="container mx-auto p-8">
             <div className="w-full">
               <p>SERVICES</p>
-              <p className="w-full mx-auto"  style={{fontSize:"30px"}}>Design Build</p>
+              <p className="w-full mx-auto title-session">Design Build</p>
             </div>
-            <div className="w-full flex my-8">
-              <div className="w-4/12">
+            <div className="w-full flex flex-wrap my-8">
+              <div className="w-full md:w-4/12 mb-8 md:mb-0">
                   <img src="../../images/service-mockup-1.png" alt="" />
                 </div>
-                <div className="w-8/12 pl-8">
+                <div className="w-full md:w-8/12 md:pl-8">
                   {
                     data?.design?.map((o:any,i:any)=>(
                       <div key={i} className="w-full">
-                        <div className="w-full flex border-b mb-4" >
-                          <h1 className='w-2/12 flex items-end' style={{fontSize:"53px"}}>{"0"+(i+1)}</h1>
-                          <h1 className='w-10/12 flex items-end' style={{fontSize:"30px"}}>{o.title}</h1>
-                          <IconContext.Provider value={{ color: "#e26330", className: "", size:"50" }}>
-                            <div className="w-2/12 flex items-end justify-end" onClick={()=>setActiveDesign({ [i]: !activeDesign[i] })}>
+                        <div className="w-full flex flex-wrap border-b mb-4" >
+                          <h1 className='w-2/12 flex items-end md:text-5xl'>{"0"+(i+1)}</h1>
+                          <h1 className='w-9/12 flex items-end md:text-3xl'>{o.title}</h1>
+                          <IconContext.Provider value={{ color: "#e26330", className: "menu-icon"}}>
+                            <div className="w-1/12 flex items-end justify-end" onClick={()=>setActiveDesign({ [i]: !activeDesign[i] })}>
                                {
                                 activeDesign[i] ? 
                                 <BsArrowUpLeft />
@@ -40,7 +40,7 @@ const Session2 = ({data}:any) => {
                         {
                           activeDesign[i] &&
                           <Fade>
-                            <div className="w-full flex text-2xl mb-4">
+                            <div className="w-full flex md:text-2xl mb-4">
                               <div className="w-2/12"></div>
                               <div className="w-10/12">
                                 {
@@ -65,16 +65,19 @@ const Session2 = ({data}:any) => {
               <p>SERVICES</p>
               <p className="w-full mx-auto"  style={{fontSize:"30px"}}>Build</p>
             </div>
-            <div className="w-full flex my-8">
-                <div className="w-8/12 ">
+            <div className="w-full flex flex-wrap my-8">
+                <div className="w-full md:w-4/12 md:pl-8 mb-8 md:mb-0 block md:hidden">
+                  <img src="../../images/service-mockup-2.png" alt="" />
+                </div>
+                <div className="w-full md:w-8/12 ">
                   {
                     data?.build?.map((o:any,i:any)=>(
                       <div key={i} className="w-full">
-                        <div className="w-full flex border-b mb-4" >
-                          <h1 className='w-2/12 flex items-end' style={{fontSize:"53px"}}>{"0"+(i+1)}</h1>
-                          <h1 className='w-10/12 flex items-end' style={{fontSize:"30px"}}>{o.title}</h1>
-                          <IconContext.Provider value={{ color: "#e26330", className: "", size:"50" }}>
-                            <div className="w-2/12 flex items-end justify-end" onClick={()=>setActiveBuild({ [i]: !activeBuild[i] })}>
+                        <div className="w-full flex flex-wrap border-b mb-4" >
+                          <h1 className='w-2/12 flex items-end md:text-5xl'>{"0"+(i+1)}</h1>
+                          <h1 className='w-9/12 flex items-end md:text-3xl'>{o.title}</h1>
+                          <IconContext.Provider value={{ color: "#e26330", className: "menu-icon"}}>
+                            <div className="w-1/12 flex items-end justify-end" onClick={()=>setActiveBuild({ [i]: !activeBuild[i] })}>
                             {
                                 activeBuild[i] ? 
                                 <BsArrowUpLeft />
@@ -87,12 +90,12 @@ const Session2 = ({data}:any) => {
                         {
                           activeBuild[i] &&
                           <Fade>
-                            <div className="w-full flex text-2xl mb-4">
+                            <div className="w-full flex md:text-2xl mb-4">
                               <div className="w-2/12"></div>
                               <div className="w-10/12">
                                 {
                                   o.step.map((oo:any,ii:any)=>(
-                                    <p key={ii}>{oo}</p>
+                                    <p  key={ii}>{oo}</p>
                                   ))
                                 }
                               </div>
@@ -105,7 +108,7 @@ const Session2 = ({data}:any) => {
                     ))
                   }
                 </div>
-                <div className="w-4/12 pl-8">
+                <div className="w-full md:w-4/12 pl-8 md:block hidden">
                   <img src="../../images/service-mockup-2.png" alt="" />
                 </div>
             </div>

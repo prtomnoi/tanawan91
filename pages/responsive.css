@@ -4,3 +4,19 @@
         max-width: 1040px;
     }
 }
+
+@media (max-width: 414px){
+    .slideshow-container-banner {
+        height: 455px;
+    }
+    .menu-icon{
+        width: 30px;
+        height: 30px;
+    }
+    .text-lang{
+        font-size: 1.6rem;
+    }
+    .text-menu{
+        font-size: 1.6rem;
+    }
+}

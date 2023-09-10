@@ -76,6 +76,10 @@ footer .detail {
   background-color: #2E2E2E;
 }
 
+.title-session{
+  font-size: 30px;
+}
+
 .btn-light-default{
   border: solid #212529;
   padding: 0.5rem 2rem 0.5rem 2rem;
@@ -143,7 +147,7 @@ footer .detail {
   color: #2E2E2E;
 }
 
-.slideshow-container {
+.slideshow-container-banner {
   position: relative;
   max-width: 100%;
   overflow: hidden;
@@ -151,14 +155,54 @@ footer .detail {
   height: 855px;
 }
 
+.slide-banner {
+  display: none;
+  /* filter: brightness(0.5); */
+}
+
+.slide-banner img{
+  height: 855px;
+  object-fit: cover;
+}
+
+.dot-container-banner{
+  bottom: 20%;
+}
+
+.dot-slide-banner {
+  width: 100%;
+  background-color: #EFEFEA;
+  border-radius: 20px;
+  height: 10px;
+}
+
+.dot-slide-banner.active{
+  width: 100%;
+  background-color: #e26330;
+  border-radius: 20px;
+  height: 10px;
+}
+
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  margin: auto;
+}
+
 .slide {
   display: none;
   /* filter: brightness(0.5); */
 }
 
+.dot-container{
+  /* bottom: 20%; */
+}
+
 .dot-slide {
   width: 100%;
-  background-color: #EFEFEA;
+  background-color: #2E2E2E;
   border-radius: 20px;
   height: 10px;
 }
@@ -168,4 +212,17 @@ footer .detail {
   background-color: #e26330;
   border-radius: 20px;
   height: 10px;
+}
+
+.menu-icon{
+  width: 50px;
+  height: 50px;
+}
+
+.text-lang{
+  font-size: 2.5rem;
+}
+
+.text-menu{
+  font-size: 2.5rem;
 }
