@@ -1,20 +1,23 @@
 import './globals.css'
 import './responsive.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+
+const poppins = Poppins({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-poppins',
+})
 
 
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-      <>
-      <Head>
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-      </Head>
-      <Component {...pageProps} />
-      </>
+      <div className={poppins.className}>
+        <Component {...pageProps} />
+      </div>
       
   )
 }
