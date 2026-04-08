@@ -16,8 +16,20 @@
   }
 }
 
+@font-face {
+  font-family: 'Noto Sans Thai';
+  src: url('/path-to-fonts/NotoSansThai-Regular.ttf') format('truetype');
+  /* Add more font properties here if needed */
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/path-to-fonts/Poppins-Regular.ttf') format('truetype');
+  /* Add more font properties here if needed */
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
+  color: #fff;
   font-family: 'Poppins'!important;
   background: linear-gradient(
       to bottom,
@@ -25,6 +37,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+body .th {
+  font-family: var(--font-noto-sans-thai);;
 }
 
 body header {
@@ -152,7 +168,7 @@ footer .detail {
   max-width: 100%;
   overflow: hidden;
   margin: auto;
-  height: 855px;
+  height: 600px;
 }
 
 .slide-banner {
@@ -165,8 +181,44 @@ footer .detail {
   object-fit: cover;
 }
 
-.dot-container-banner{
-  bottom: 20%;
+.slick-dots{
+  bottom: 20% !important;
+}
+
+.slider-articles .slick-dots{
+  bottom: 0px !important;
+}
+
+.slider-articles .slick-dots li button {
+  width: 80px !important;
+  height: 10px !important;
+  background-color: #2E2E2E !important;
+  border-radius: 10px;
+  /* background: transparent; !important*/ 
+}
+
+.slick-dots li {
+    width: 80px !important;
+}
+
+.slick-dots li button {
+  width: 80px !important;
+  height: 10px !important;
+  background-color: #fff !important;
+  border-radius: 10px;
+  /* background: transparent; !important*/ 
+}
+
+.slick-dots li.slick-active button {
+  width: 80px !important;
+  height: 10px !important;
+  background-color: #e26330 !important;
+  border-radius: 10px;
+  /* background: transparent; */
+}
+
+.slick-dots li button:before {
+  content: '' !important;
 }
 
 .dot-slide-banner {
@@ -215,8 +267,8 @@ footer .detail {
 }
 
 .menu-icon{
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 .text-lang{
@@ -224,5 +276,29 @@ footer .detail {
 }
 
 .text-menu{
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.project-category{
+  border: solid 2px #6d727f;
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  font-size: 13px;
+  display: block;
+  /* width: 100px; */
+  text-align: center;
+}
+
+.project-category.active{
+  border: solid 2px #e26330;
+  background-color: #e26330;
+  color: #ffffff;
+}
+
+.input-select-lang {
+  background: transparent;
+}
+
+.input-select-lang option {
+ background-color: #363636;
 }

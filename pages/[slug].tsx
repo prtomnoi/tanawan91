@@ -5,8 +5,9 @@ import { GetServerSideProps, NextPage } from 'next';
 
 interface ProviderPageProps {
   slug: string; 
+  lang: string;
 }
-const Slag: NextPage<ProviderPageProps> = ({ slug } : any) => {
+const Slag: NextPage<ProviderPageProps> = ({ slug, lang } : any) => {
   const arrDataDesign = [ 
     "Talking",
     "Design Process",
@@ -15,7 +16,7 @@ const Slag: NextPage<ProviderPageProps> = ({ slug } : any) => {
     "Project Hand over"
   ];
   return (
-    <Layout>
+    <Layout lang={lang} title={slug}>
       <div className="w-full service-session pt-4">
         <div className="container mx-auto p-8">
             <div className="w-full ">
@@ -44,9 +45,15 @@ const Slag: NextPage<ProviderPageProps> = ({ slug } : any) => {
 
 export const getServerSideProps: GetServerSideProps<ProviderPageProps> = async (context :any) => {
   const { slug } = context.params;
+  const locale = context.locale;
+   let lang = "";
+  if(locale == "th"){
+    lang = "-"+locale;
+  }
   return {
     props: {
       slug,
+      lang
     },
   };
 };

@@ -1,77 +1,97 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import parse from 'html-react-parser';
+import Swal from 'sweetalert2';
 
-const Contact = () => {
-  const data = [
-    {
-      img:"../../images/project-mockup-1.png",
-      title:"Lorem ipsum dolor sit amet, consectetur",
-      shotDesc:`here are many variations of passages of 
-      Lorem Ipsum available, but the majority 
-      have suffered alteration in some form`
-    },
-    {
-      img:"../../images/project-mockup-2.png",
-      title:"Lorem ipsum dolor sit amet, consectetur",
-      shotDesc:`here are many variations of passages of 
-      Lorem Ipsum available, but the majority 
-      have suffered alteration in some form`
-    },
-    {
-      img:"../../images/project-mockup-3.png",
-      title:"Lorem ipsum dolor sit amet, consectetur",
-      shotDesc:`here are many variations of passages of 
-      Lorem Ipsum available, but the majority 
-      have suffered alteration in some form`
-    }
-  ]
+const Contact = ({data}:any) => {
+  const [dataPost,setDataPost] = useState({
+    firstName:"",
+    email:"",
+    phone:"",
+    subject:"",
+    massage:""
+  });
+
+  const handleChange = (e:any) => {
+    const {name,value} = e.target;
+    console.log(name,value);
+    setDataPost({...dataPost,[name]:value});
+  }
+
+  const submit = () => {
+    const axios = require('axios');
+    let data = {
+      name: dataPost.firstName,
+      email: dataPost.email,
+      phone: dataPost.phone,
+      subject: dataPost.subject,
+      message: dataPost.massage
+    };
+
+
+    axios.post(process.env.NEXT_PUBLIC_API_URL+'api/contact/', data)
+    .then((response:any) => {
+      console.log(response.data);
+      Swal.fire({
+        title: 'Success',
+        text: response.data.message,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setDataPost({
+        firstName:"",
+        email:"",
+        phone:"",
+        subject:"",
+        massage:""
+      })
+    });
+  }
   return (
     <div className="w-full about-session text-black pt-4">
       <div className="container mx-auto p-8">
-        <div className="w-full">
-          <p>CONTACT US</p>
+        <div className="w-full pb-4">
+          <p><b>CONTACT US</b></p>
         </div>
         <div className="w-full flex flex-wrap">
           <div className="w-full md:w-4/12">
-            <p>
-              64/66 Soi Cholprathan 10, Khan Klong Road, 
-              Hua Hin, Hua Hin, Prachuap KhiriKhan 77110
-              telephone : 09 3388 8515
-            </p>
-            <div className="w-full flex">
-              <div className="w-3/12">Phone : </div>
-              <div className="w-9/12">032 510025</div>
-            </div>
-            <div className="w-full flex flex-wrap">
-              <div className="w-3/12">Email : </div>
-              <div className="w-9/12">panithan_ipk@hotmail.com</div>
-              <div className="w-3/12"></div>
-              <div className="w-9/12">tanawan91@tanawan91.co.th</div>
-            </div>
-            <div className="w-full">
+            {
+              data?.map((o:any,i:any)=>(
+                o.description &&
+                parse((`${o.description}`))
+              ))
+            }
+            <div className="w-full pt-4">
               <div className="w-full mb-4">
-                 <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="First Name"/>
+                 <input className="w-full form-control-black" onChange={handleChange} value={dataPost.firstName} type="text" name="firstName" id="firstName" placeholder="First Name"/>
               </div>
               <div className="w-full mb-4">
-                 <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="Your Email"/>
+                 <input className="w-full form-control-black" onChange={handleChange} value={dataPost.email} type="text" name="email" id="email" placeholder="Your Email"/>
               </div>
               <div className="w-full mb-4">
-                 <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="Moblie Number"/>
+                 <input className="w-full form-control-black" onChange={handleChange} value={dataPost.phone} type="text" name="phone" id="phone" placeholder="Moblie Number"/>
               </div>
               <div className="w-full mb-4">
-                 <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="How Can I Help You?"/>
+                 <input className="w-full form-control-black" onChange={handleChange} value={dataPost.subject} type="text" name="subject" id="subject" placeholder="How Can I Help You?"/>
               </div>
               <div className="w-full mb-4">
-                 <input className="w-full form-control-black" type="text" name="firstName" id="firstName" placeholder="Your Massages"/>
+                 <input className="w-full form-control-black" onChange={handleChange} value={dataPost.massage} type="text" name="massage" id="massage" placeholder="Your Messages"/>
               </div>
               <div className="w-full py-8">
-                <Link href="#" className="btn-light-default">Submit Now</Link>
+                <button type="button" onClick={submit} className="btn-light-default">Submit Now</button>
               </div>
             </div>
           </div>
           <div className="w-full md:w-8/12 md:px-8">
-            <img className="w-full" src="../../images/map-mockup.png" alt="" />
+          {
+              data?.map((o:any,i:any)=>(
+                <Link key={i} href={o?.mapURL} target="_blank">
+                    <img className="w-full h-full object-cover" src={process.env.NEXT_PUBLIC_IMG_URL+o.image} alt="" />
+                </Link>
+              ))
+            }
           </div>
         </div>
       </div>

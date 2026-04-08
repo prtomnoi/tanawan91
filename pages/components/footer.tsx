@@ -1,5 +1,6 @@
 import React from "react";
 import Image from 'next/image';
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -36,22 +37,22 @@ const Footer = () => {
                     <p>tanawan91@tanawan91.co.th</p>
                 </div>
                 <div className="grid-item detail">
-                    <p>Home</p>
-                    <p>Services</p>
-                    <p>Projects</p>
-                    <p>Publications</p>
-                    <p>Contact</p>
+                    <p><Link href="/">Home</Link></p>
+                    <p><Link href="/services">Services</Link></p>
+                    <p><Link href="/projects">Projects</Link></p>
+                    <p><Link href="/articles">Publications</Link></p>
+                    <p><Link href="/contact">Contact</Link></p>
                 </div>
-                <div className="grid-item detail">
+                <div className="grid-item detail pr-8">
                     <input type="text" className="form-control" name="email" id="email" placeholder="Your Email" />
                 </div>
                 
-                <div className="grid-item border-t"></div>
-                <div className="grid-item border-t"></div>
-                <div className="grid-item text-center detail border-t pt-4">
+                <div className="grid-item "></div>
+                <div className="grid-item "></div>
+                <div className="grid-item text-center detail pt-4">
                     <p>&copy; {new Date().getFullYear()} TANAWAN91. All rights reserved</p>
                 </div>
-                <div className="grid-item border-t"></div>
+                <div className="grid-item "></div>
 
                 {/* row end */}
             </div>

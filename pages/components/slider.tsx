@@ -1,11 +1,21 @@
+import Link from "next/link";
 import React, { Children, ReactNode, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
+import Slider from "react-slick";
 
 interface Props {
     data: any;
     autoPlay:boolean;
 }
-const Slider: React.FC<Props> = ({data,autoPlay}) => {
+const SliderComponent: React.FC<Props> = ({data,autoPlay}) => {
+    var settings = {
+        dots: true,
+        arrows:false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     let gid = makeid(5);
     const [genId, setGenId] = useState<any>(gid);
     let slideIndex = 0;
@@ -22,68 +32,38 @@ const Slider: React.FC<Props> = ({data,autoPlay}) => {
         return result;
     }
   
-    function showSlides(index?:any) {
-      if(index){
-        slideIndex = index;
-      }
-      let ele:any = document.getElementById(gid);
-      console.log(gid,ele);
-      let slides:any = document.getElementsByClassName("slide");
-      let dots:any = document.getElementsByClassName("dot-slide");
-      if(slides.length > 0){
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-            dots[i].classList.remove("active");
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].classList.add("active");
-        if(autoPlay){
-          setTimeout(showSlides, 10000); // Change slide every 5 seconds (5000 milliseconds)
-        }
-      }
-  }
   useEffect(()=>{
     // setGenId(makeid(5))
-    showSlides();
+    // showSlides();
   },[])
   return (
-    <div className="w-full relative">
-        <div className="slideshow-container" id={gid}>
+    <div className="w-full">
+        <Slider {...settings} className='slider-articles'>
             {
                 data?.map((o:any,i:any)=>(
-                    <div key={i} className="slide">
+                    
+                    <div key={i} className="slide p-2">
                         <Fade>
-                            <div className="w-full flex flex-wrap my-8">
+                            {/* <Link href={`articles/${o.title.replace(/ /g,"-").toLowerCase()}`}> */}
+                            <div key={i} className="w-full flex flex-wrap my-8">
                                 <div className="md:w-2/4 w-full">
-                                    <img src={o.img} alt="" />
+                                    <img className="rounded-lg" src={process.env.NEXT_PUBLIC_IMG_URL+o.image} alt="" />
                                 </div>
                                 <div className="md:w-2/4 w-full flex items-center">
-                                    <div className="w-full p-4">
+                                <div className="w-full p-4">
                                     <h1 className='w-full'>{o.title}</h1>
-                                    <p className='w-full'>{o.shotDesc}</p>
-                                    </div>
+                                    <p className='w-full'>{o.description}</p>
+                                </div>
                                 </div>
                             </div>
+                            {/* </Link> */}
                         </Fade>
                     </div>
                 ))
             }
-        </div>
-        <div className="w-full flex justify-center absolute dot-container">
-            <div className="w-1/3 flex mx-auto">
-                {data?.map((o:any,i:any)=>(
-                    <div key={i} className='w-full px-2 text-center'>
-                        <button type='button' className="dot-slide active" onClick={()=>showSlides(0)}></button>
-                    </div>
-                ))}
-            </div>
-        </div>
+        </Slider>
       </div>
   );
 };
 
-export default Slider;
+export default SliderComponent;

@@ -5,72 +5,30 @@ import Session2 from './components/homes/session2';
 import Session3 from './components/homes/session3';
 import Session4 from './components/homes/session4';
 import Contact from './components/homes/contact';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Fade } from "react-awesome-reveal";
+import Slider from "react-slick";
 
-const Home = () => {
-  const data = {
-    design:[ 
-      {
-        title:"Talking",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Design Process",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Construction Drawing and Construction Permission",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Construction",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Project Hand over",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      }
-    ],
-    build:[ 
-      {
-        title:"Talking",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Construction",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      },
-      {
-        title:"Project Hand over",
-        step:[
-          "A : ให้คำปรึกษา พูดคุย ถึงโจทย์ของโครงการ ความต้องการ งบประมาณ สำรวจพื้นที่หน้างาน",
-          "B : ร่างสัญญา รายละเอียดของงาน"
-        ]
-      }
-    ]
-  }
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+
+const Home = ({res,resT,lang}:any) => {
+  const { t, i18n } = useTranslation('common');
+  const [titleAbout,setTitleAbout] = useState("");
+  const [titleProject,setTitleProject] = useState("");
+  const [dataSetting,setDataSetting] = useState();
+  var settings = {
+    dots: true,
+    arrows:false,
+    infinite: true,
+    fade:true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   let slideIndex = 0;
   let timeoutID:any;
   
@@ -101,52 +59,64 @@ const Home = () => {
       showSlides(index); // เริ่มการแสดงสไลด์ใหม่ทันที
   }
   useEffect(()=>{
-    showSlides();
+    // showSlides();
+    let l = "";
+    if(lang == "th"){
+      l = "_th";
+    }
+    if(res?.settingWeb?.filter((e:any) => e.page == 'about').length>0){
+      const t = res?.settingWeb?.filter((e:any) => e.page == 'about')[0][`title${l}`];
+      setTitleAbout(t);
+    }
+    if(res?.settingWeb?.filter((e:any) => e.page == 'service').length>0){
+      const dSetting = res?.settingWeb?.filter((e:any) => e.page == 'service')[0];
+      setDataSetting(dSetting);
+    }
+    if(res?.settingWeb?.filter((e:any) => e.page == 'project').length>0){
+      const t = res?.settingWeb?.filter((e:any) => e.page == 'project')[0][`title${l}`];
+      setTitleProject(t);
+    }
+    //console.log(res?.settingWeb?.filter((e:any) => e.page == 'about'));
   },[])
-
+  console.log(res,titleAbout);
   return (
-    <Layout>
-      {/* <div className='banner'></div> */}
+    <Layout lang={lang}>
       <div className="w-full relative">
-        <div className="slideshow-container-banner">
-            <div className="slide-banner">
-                <Fade>
-                  <img className='w-full' src="../../images/img-banner.png" alt="Slide 1" />
-                </Fade>
-            </div>
-            <div className="slide-banner">
-                <Fade>
-                  <img className='w-full' style={{filter:"brightness(0.5)"}} src="../../images/article-mockup-2.png" alt="Slide 2" />
-                </Fade>
-            </div>
-            <div className="slide-banner">
-                <Fade>
-                  <img className='w-full' src=".../../images/about-mockup-2.png" alt="Slide 3" />
-                </Fade>
-            </div>
-        </div>
-        <div className="w-full flex justify-center absolute dot-container-banner">
-            <div className="w-1/3 md:w-1/6 flex mx-auto">
-              <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide-banner active" onClick={()=>resetTimeout(0)}></button>
-              </div>
-              <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide-banner" onClick={()=>resetTimeout(1)}></button>
-              </div>
-              <div className='w-4/12 px-2 text-center'>
-                <button type='button' className="dot-slide-banner" onClick={()=>resetTimeout(2)}></button>
-              </div>
-            </div>
-        </div>
       </div>
-      
-      <Session1/>
-      <Session2 data={data}/>
-      <Session3/>
-      <Session4/>
-      <Contact/>
+      <Fade>
+        <Slider {...settings} className='slideshow-container-banner'>
+          {
+            res.slider.map((o:any,i:any)=>(
+              <div key={i} className="slide-banner">
+                <img className='w-full' style={{filter:"brightness(0.5)"}} src={process.env.NEXT_PUBLIC_IMG_URL+o.image} />
+              </div>
+            ))
+          }
+        </Slider>
+      </Fade>
+      <Session1 data={res.abouts} title={titleAbout}/>
+      <Session2 dataRes={res.services} dataSetting={dataSetting}/>
+      <Session3 data={res.projects} title={titleProject}/>
+      <Session4 data={res.articles}/>
+      <Contact data={res.contact}/>
     </Layout>
   )
+}
+
+
+export async function getServerSideProps({query,locale}:any) { 
+  let lang = "";
+  if(locale == "th"){
+    lang = "-"+locale;
+  }
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL+`/api/homes`+lang);
+  const data = await res?.json(); 
+  return {
+    props: {
+      res:data||null,
+      lang:locale
+    },
+  } 
 }
 
 export default Home;
