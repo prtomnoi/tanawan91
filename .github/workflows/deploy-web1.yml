@@ -23,6 +23,7 @@ jobs:
       - name: Sync project to server
         run: |
           rsync -avz --delete \
+            --exclude ".env.production" \
             --exclude ".git" \
             --exclude ".github" \
             --exclude "node_modules" \
