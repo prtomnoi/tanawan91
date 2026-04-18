@@ -22,12 +22,12 @@ jobs:
 
       - name: Sync project to server
         run: |
-          rsync -avz --delete \
-            --exclude ".env.production" \
+            rsync -avz --delete \
             --exclude ".git" \
             --exclude ".github" \
             --exclude "node_modules" \
             --exclude ".next" \
+            --exclude ".env.production" \
             -e "ssh -p ${{ secrets.SERVER_PORT }} -i ~/.ssh/id_ed25519" \
             ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/docker/apps/web1/
 
